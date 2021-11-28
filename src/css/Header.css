@@ -1,0 +1,78 @@
+
+#Publicity{
+    width:100%;
+    height:500px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('../img/pizza_publicity.jpg');
+}
+.header{
+	font-family: 'Montserrat';
+	width: 900px;
+	position: absolute;
+    left: 20%;
+    top: 55%;
+    text-align: left;
+	transform: translate(-25%,-55%);
+}
+.header span{
+    font-family: 'Alfa Slab One';
+    color: #bf2222;
+    border-bottom: 2px solid #fff;
+}
+.header .details{
+    font-size: 23px;
+    color: #181818;
+}
+.header h3{
+	font-family:'Bebas Neue';
+	font-size: 1.6rem;
+	margin:0px 8rem;
+	letter-spacing: 2px;
+	color:#fff;
+}
+.header h1{
+	font-family:'Alfa Slab One';
+	font-size: 4rem;
+	margin:0px 2.8;
+	letter-spacing: 2px;
+	color:#fff;
+}
+
+@media(max-width: 460.98px){
+
+  #Publicity{
+      display: flex;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+  }
+    
+  .header{
+    margin: 5% -5.8px;
+    top: 50%;
+    left: 30%;
+   }
+ 
+   .header > h3{
+     font-size: 1.5rem;
+   }
+
+   .header h1{
+       font-size: 3rem;
+       margin: 0 8rem;
+   }
+ 
+}
+
+@media(min-width: 768px){
+    #Publicity{
+        max-width: 100%;
+    }
+
+    .header h1{
+        margin: 0 5rem;
+    }
+}
