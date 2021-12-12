@@ -5,7 +5,7 @@
     position: relative;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url('../img/pizza_publicity.jpg');
+    background-image: url('../img/Taco_Publicity.jpg');
 }
 .header{
 	font-family: 'Montserrat';
@@ -14,7 +14,7 @@
     left: 20%;
     top: 55%;
     text-align: left;
-	transform: translate(-25%,-55%);
+	transform: translate(-25%,-200%);
 }
 .header span{
     font-family: 'Alfa Slab One';

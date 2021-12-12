@@ -5,8 +5,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
-function ImgMediaCard({image, name,description,price,onclick}) {
+import "../css/Product.css"
+function ImgMediaCard({image, name,description,price,calorias,onclick}) {
 
   //let onclick = props.onclick
  const showprice = ()=> {
@@ -22,14 +22,17 @@ function ImgMediaCard({image, name,description,price,onclick}) {
         image={image}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h5" component="div" className="name">
           {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {description}
+          Porciones: {description}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          $: {price}
+          Precio: ${price}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Calorias: {calorias}
         </Typography>
       </CardContent>
       <CardActions>

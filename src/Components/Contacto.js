@@ -125,7 +125,7 @@ function Contacto() {
               <strong>Télefono:</strong> 5548592615
             </li>
             <li>
-              <strong>Email:</strong> atencion.clientes@delipizza.com
+              <strong>Email:</strong> atencion.clientes@tacodeli.com
             </li>
           </ul>
         </div>

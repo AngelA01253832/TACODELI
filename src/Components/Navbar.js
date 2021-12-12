@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import '../css/Navbar.css'
 import Home from './Home';
-import Pizza_menu from './Pizza_menu'
-import  Adicionales from './Adicionales_menu'
+import TacoMenu from './Tacomenu'
+import  HamburguesaMenu from './Hamburguesamenu'
 import Contacto from './Contacto'
 import Pedido from './Pedido'
+import PaquetesMenu from './Paquetes'
 import { 
     BrowserRouter as Router,
     Route,
@@ -24,23 +25,26 @@ function Navbar(){
     }
     return(
         <Router>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <Link to="/"><h1><span>PIZZA</span> DELI</h1></Link>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <Link to="/"><h1><span>TACO</span> DELI</h1></Link>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <Link to="/Pizzas">Pizzas</Link>
+            <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul className="navbar-nav">
+                <li className="nav-item active">
+                    <Link to="/Tacos">Tacos</Link>
                 </li>
-                <li class="nav-item">
-                    <Link to="/Adicionales">Adicionales</Link>
+                <li className="nav-item">
+                    <Link to="/Paquetes">Paquetes</Link>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
+                    <Link to="/Hamburguesas">Hamburguesas</Link>
+                </li>
+                <li className="nav-item">
                     <Link to="/Contacto">Contacto</Link>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                     <Link to="/Pedidos">Status pedido</Link>
                 </li>
                     
@@ -48,13 +52,18 @@ function Navbar(){
             </div>
         </nav>
             <Switch>
-                <Route path="/Pizzas">
-                    <Pizza_menu
+                <Route path="/Tacos">
+                    <TacoMenu
                         onclick = {addcart}
                     />
                 </Route>
-                <Route path="/Adicionales">
-                    <Adicionales
+                <Route path="/Paquetes">
+                    <PaquetesMenu
+                        onclick = {addcart}
+                    />
+                </Route>
+                <Route path="/Hamburguesas">
+                    <HamburguesaMenu
                         onclick = {addcart}
                     />
                 </Route>

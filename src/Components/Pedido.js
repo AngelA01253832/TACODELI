@@ -7,9 +7,7 @@ import imagepedido from '../img/entrega.png'
 function Pedido(props){
     const [pedidos, setPedidos] = useState(false);
     let pago = props.pago
-    let pagostate = props.pagostate
     let cart = props.cart
-    let setCart = props.setCart
     
     const orderverification = (e) => setPedidos(e)
     const alertapedido = () => alert("No hay pedidos existentes") 
@@ -21,9 +19,6 @@ function Pedido(props){
             <div className="false-order-container">
                 <button type="button" class="btn btn-success" onClick={ cart === 0  ? alertapedido : orderverification}>Confirmar orden</button>
             </div>
-            {/* <div className="img-progress-container">
-                <img src={emptycart}></img>
-            </div> */}
         </>
         )
     }
@@ -32,7 +27,7 @@ function Pedido(props){
 
             <h1 className="title">Status de mi pedido</h1>
             <div className="img-progress-container">
-                <img src={imagepedido}></img>
+                <img src={imagepedido} alt="img-food"></img>
             </div>
             <div className = "StepProgress">
                 <div className = "Progress-container">

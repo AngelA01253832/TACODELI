@@ -1,64 +1,85 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import "../css/Recomendation.css"
 import ImgMediaCard from "./Product";
-import {Box,Grid} from '@material-ui/core';
-import pizzalist from '../Fake_backend/Pizza_data'
+import {Grid} from '@material-ui/core';
 import recomendation1list1 from "../Fake_backend/recomendation1";
 import recomendation1list2 from "../Fake_backend/recomendation2";
-function Recomendation({props, onclick}){
+import axios from "axios";
+function Recomendation({onclick}){
+    const [data,setData] = useState([])
+
+    useEffect(()=>{
+        axios.get('https://delivery-app-appi.herokuapp.com/v1/platos')
+        .then(res => {
+            const response = res.data
+            const randomvalues = []
+            const positions = []
+            let i,r;
+            for(i = 0; i < response.length; i++) positions[i] = i;
+            for (i = 0; i < 12; i++) {
+                r = Math.floor(Math.random() * positions.length);
+                randomvalues.push(response[positions[r]]);
+                positions.splice(r, 1);
+              }
+            setData(randomvalues)
+        }).catch(err => {
+            console.log(err) 
+        })
+    },[])
     return(  
          <div>
              <h1 className="title">Recomendaciones</h1>
-             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
+             <div id="carouselExampleDark" className="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div className="carousel-inner" >
+                    <div className="carousel-item active">
                         <div className="Cardcontainer">
-                            <Grid container align = "center" justify = "center" alignItems = "center" >
-                            {
-                                recomendation1list1.map((e) => 
-                                    <Grid item xs={8} sm={8} md={6} lg={4}>
-                                        <ImgMediaCard 
-                                        name = {e.name}
-                                        description = {e.description}
-                                        image = {e.image}
-                                        price= {e.price}
-                                        onclick = {onclick}
-                                        />    
-                                    </Grid>
-                                )
-                            }
-                            </Grid>
+                            <div className="Menu-container" key={recomendation1list1.id}>
+                                <Grid container align = "center" justifyContent = "center" alignItems = "center" >
+                                {
+                                    data.slice(0, 6).map((e) => 
+                                        <Grid item xs={8} sm={8} md={6} lg={4}>
+                                            <ImgMediaCard 
+                                            name = {e.nombre}
+                                            description = {e.porciones}
+                                            image = {e.imagen}
+                                            price= {e.precio.$numberDecimal}
+                                            calorias= {e.calorias}
+                                            onclick = {onclick}
+                                            />    
+                                        </Grid>
+                                    )
+                                }
+                                </Grid>
+                            </div>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                    <Grid container align = "center" justify = "center" alignItems = "center" >
-                        {
-                            recomendation1list2.map((e) => 
-                                <Grid item xs={10} sm={8} md={6} lg={4}>
-                                    <ImgMediaCard 
-                                    name = {e.name}
-                                    description = {e.description}
-                                    image = {e.image}
-                                    price= {e.price}
-                                    onclick = {onclick}
-                                    />    
-                                </Grid>
-                            )
-                        }
-                    </Grid> 
+                    <div className="carousel-item">
+                        <div className="Menu-container" key={recomendation1list2.id}>
+                            <Grid container align = "center"  alignItems = "center" >
+                                {
+                                    data.slice(6, 12).map((e) => 
+                                        <Grid item xs={10} sm={8} md={6} lg={4}>
+                                            <ImgMediaCard 
+                                            name = {e.nombre}
+                                            description = {e.porciones}
+                                            image = {e.imagen}
+                                            price= {e.precio.$numberDecimal}
+                                            calorias= {e.calorias}
+                                            onclick = {onclick}
+                                            />    
+                                        </Grid>
+                                    )
+                                }
+                            </Grid> 
+                        </div>
                     </div>
 
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
