@@ -5,7 +5,6 @@ import {Grid} from '@material-ui/core';
 import axios from "axios";
 function Recomendation({onclick}){
     const [data,setData] = useState([])
-
     useEffect(()=>{
         axios.get('https://delivery-app-appi.herokuapp.com/v1/platos')
         .then(res => {
