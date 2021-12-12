@@ -2,8 +2,6 @@ import React, { useState,useEffect } from "react";
 import "../css/Recomendation.css"
 import ImgMediaCard from "./Product";
 import {Grid} from '@material-ui/core';
-import recomendation1list1 from "../Fake_backend/recomendation1";
-import recomendation1list2 from "../Fake_backend/recomendation2";
 import axios from "axios";
 function Recomendation({onclick}){
     const [data,setData] = useState([])
@@ -33,7 +31,7 @@ function Recomendation({onclick}){
                 <div className="carousel-inner" >
                     <div className="carousel-item active">
                         <div className="Cardcontainer">
-                            <div className="Menu-container" key={recomendation1list1.id}>
+                            <div className="Menu-container" key={data.slice(0, 6).id}>
                                 <Grid container align = "center" justifyContent = "center" alignItems = "center" >
                                 {
                                     data.slice(0, 6).map((e) => 
@@ -54,7 +52,7 @@ function Recomendation({onclick}){
                         </div>
                     </div>
                     <div className="carousel-item">
-                        <div className="Menu-container" key={recomendation1list2.id}>
+                        <div className="Menu-container" key={data.slice(6, 12).id}>
                             <Grid container align = "center"  alignItems = "center" >
                                 {
                                     data.slice(6, 12).map((e) => 
