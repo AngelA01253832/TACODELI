@@ -3,7 +3,6 @@
 - Ángel Manuel Bonilla Huesca
 - Aury Josué Almazán Guzmán
 - Darwin Jiménez
-- Wilber Aldair Alegria Mendez
 
 ## Descripción del Proyecto
 
