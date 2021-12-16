@@ -1,11 +1,9 @@
-ul{
-    list-style: none;
-}
-a{
+.item{
     text-decoration: none;
 }
-.logo:hover{
+#logo{
     cursor: pointer;
+    text-decoration: none;
 }
 .navbar span{
     font-family: 'Alfa Slab One';
@@ -13,7 +11,11 @@ a{
     text-decoration: none;
     
 }
+.Container{
 
+    background-color: transparent;
+    
+}
 .navbar h1{
 	font-family:'Alfa Slab One';
 	font-size: 1.5rem;
@@ -21,17 +23,12 @@ a{
 	letter-spacing: 2px;
 	color:#3d2514;
 }
-.navbar{
-    background-color: transparent;
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
-}
-.navbar ul{
+
+#navbar-items{
     margin: 1px;
     display: flex;
 }
-.navbar ul li a{
+.item{
     font-family: 'Bebas Neue';
     color:#3d2514;
 	height:40px;
@@ -47,20 +44,11 @@ a{
     text-decoration: none;
 }
 
-.navbar ul li a:hover{
+.item:hover{
     cursor:pointer;
 	background-color: #bf2222;
     color:#ffffff;
 	box-shadow: 5px 10px 30px rgba(255, 2, 2, 0.336);
 	transition: all ease 0.2s;
     text-decoration: none;
-}
-
-#Cart{
-    margin-left: 25vw;
-}
-
-.contacto{
-  text-align: center;
-  width: 100%;
 }

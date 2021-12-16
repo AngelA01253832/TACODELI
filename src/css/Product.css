@@ -1,3 +1,22 @@
 .name::first-letter {
     text-transform: uppercase;
 }
+.ButtonContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ButtonContainer button{
+    background-color:#0070c0;
+    color: #fff;
+}
+
+.buttoncard:hover{
+    color: #0070c0;
+}
+ul{
+    list-style: none;
+}
+
+

@@ -7,7 +7,7 @@ import axios from "axios";
 
     
 
-export default function TacoMenu({ onclick}){
+export default function TacoMenu({onclick}){
     const [data,setData] = useState([])
     const [loading,setLoading] = useState(false)
     const [currentPage,setCurrentPage] = useState(1)
@@ -56,6 +56,7 @@ export default function TacoMenu({ onclick}){
                             price= {e.precio.$numberDecimal}
                             calorias= {e.calorias}
                             onclick = {onclick}
+                            ingredients = {e.ingredientes}
                             />    
                         </Grid>
                     )

@@ -26,3 +26,21 @@
 .Progress-container{
     color: #fff;
 }
+.Container{
+    display: flex;
+    justify-content: center;
+}
+.Products-container{
+    margin-top: 50px;
+    width: 25%;
+}
+li{
+	font-family: 'Bebas Neue';
+    color:#3d2514;
+    font-size: 1.5rem;
+}
+.stripe-container{
+    width: 40%;
+    text-align: center;
+    margin: 25px auto;
+}

@@ -4,8 +4,10 @@ import ImgMediaCard from "./Product";
 import {Grid} from '@material-ui/core';
 import axios from "axios";
 function Recomendation({onclick}){
+    const [loading,setLoading] = useState(false)
     const [data,setData] = useState([])
     useEffect(()=>{
+        setLoading(true)
         axios.get('https://delivery-app-appi.herokuapp.com/v1/platos')
         .then(res => {
             const response = res.data
@@ -19,10 +21,24 @@ function Recomendation({onclick}){
                 positions.splice(r, 1);
               }
             setData(randomvalues)
+            setLoading(false);
         }).catch(err => {
             console.log(err) 
         })
     },[])
+
+    if(loading){
+        return(
+            <div className="spinner-container">
+                <div className="d-flex justify-content-center">
+                    <div id ="spinner" className="spinner-border text-primary"  role="status">
+                        <span className="sr-only"></span>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     return(  
          <div>
              <h1 className="title">Recomendaciones</h1>
@@ -42,6 +58,7 @@ function Recomendation({onclick}){
                                             price= {e.precio.$numberDecimal}
                                             calorias= {e.calorias}
                                             onclick = {onclick}
+                                            ingredients = {e.ingredientes}
                                             />    
                                         </Grid>
                                     )
@@ -63,6 +80,7 @@ function Recomendation({onclick}){
                                             price= {e.precio.$numberDecimal}
                                             calorias= {e.calorias}
                                             onclick = {onclick}
+                                            ingredients = {e.ingredientes}
                                             />    
                                         </Grid>
                                     )
@@ -72,13 +90,13 @@ function Recomendation({onclick}){
                     </div>
 
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
+                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span className="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
+                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span className="visually-hidden">Next</span>
                 </button>
             </div>
          </div>

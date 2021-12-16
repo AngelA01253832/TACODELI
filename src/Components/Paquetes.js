@@ -33,9 +33,9 @@ export default function PaquetesMenu({ onclick}){
     if(loading){
         return(
             <div className="spinner-container">
-                <div class="d-flex justify-content-center">
-                    <div id ="spinner" class="spinner-border text-primary"  role="status">
-                        <span class="sr-only"></span>
+                <div className="d-flex justify-content-center">
+                    <div id ="spinner" className="spinner-border text-primary"  role="status">
+                        <span className="sr-only"></span>
                     </div>
                 </div>
             </div>
@@ -57,6 +57,7 @@ export default function PaquetesMenu({ onclick}){
                             price= {e.precio.$numberDecimal}
                             calorias= {e.calorias}
                             onclick = {onclick}
+                            ingredients = {e.ingredientes}
                             />    
                         </Grid>
                     )

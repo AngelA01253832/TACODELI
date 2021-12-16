@@ -6,6 +6,7 @@ import  HamburguesaMenu from './Hamburguesamenu'
 import Contacto from './Contacto'
 import Pedido from './Pedido'
 import PaquetesMenu from './Paquetes'
+import { Navbar, Container, Nav } from "react-bootstrap"
 import { 
     BrowserRouter as Router,
     Route,
@@ -13,44 +14,51 @@ import {
     Switch
 } from "react-router-dom";
 
-function Navbar(){
+export default function Navbarmenu(){
     const [pago,setPago] = useState(0)
     const [cart,setCart] = useState(0) 
+    const [nombre,setNombres] = useState([]) 
+    const [data,setData] = useState([])
 
-
-    const addcart = (precio) => {
+    const addcart = (precio,name) => {
+        let pricenumber = parseInt(precio)
         setCart(cart+1)
-        setPago(pago+precio)
+        setPago(pago+pricenumber)
+        setNombres(nombres => [...nombres, name])
 
     }
+    const addData = (values) => setData(values)
+
+    
     return(
         <Router>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link to="/"><h1><span>TACO</span> DELI</h1></Link>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul className="navbar-nav">
-                <li className="nav-item active">
-                    <Link to="/Tacos">Tacos</Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/Paquetes">Paquetes</Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/Hamburguesas">Hamburguesas</Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/Contacto">Contacto</Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/Pedidos">Status pedido</Link>
-                </li>
-                    
-                </ul>
-            </div>
-        </nav>
+        <Navbar className="Container" bg="light" expand="lg">
+            <Container className='Container'>
+                <Navbar.Brand>
+                    <Link id='logo' to="/"><h1><span>TACO</span> DELI</h1></Link>
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav id='navbar-items' className="me-auto">
+                        <Nav.Link>
+                            <Link className="item" to="/Tacos">Tacos</Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link className="item" to="/Paquetes">Paquetes</Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link className="item" to="/Hamburguesas">Hamburguesas</Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link className="item" to="/Contacto">Contacto</Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link className="item" to="/Pedidos">Carrito({cart})</Link>
+                        </Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
             <Switch>
                 <Route path="/Tacos">
                     <TacoMenu
@@ -78,7 +86,11 @@ function Navbar(){
                         setPago = {setPago}
                         cart = {cart}
                         setCart = {setCart}
-
+                        nombre = {nombre}
+                        setNombres= {setNombres}
+                        data = {data}
+                        setData= {setData}
+                        addData={addData}
                     />
                 </Route>
                 <Route path="/">
@@ -89,4 +101,3 @@ function Navbar(){
     )
 }
 
-export default Navbar;

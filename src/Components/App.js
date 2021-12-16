@@ -1,11 +1,10 @@
 import '../css/App.css';
-import Navbar from './Navbar';
+import Navbarmenu from './Navbar';
 
 function App() {
-  //Estado del carrito
   return (
     <div className="App">
-      <Navbar/>
+      <Navbarmenu/>
     </div>
   );
 }
